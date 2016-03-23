@@ -478,6 +478,20 @@ function $StateProvider(   $urlRouterProvider,   $urlMatcherFactory) {
    *       }
    *     }</pre>
    *
+   *   Resolve functions can be injected with other resolve keys.  The controller can take in both
+   *   data as well
+   * 
+   * <pre>resolve: {
+   *     myResolve1:
+   *       function($http, $stateParams) {
+   *         return $http.get("/api/foos/"+stateParams.fooID);
+   *       },
+   *     myResolve2:
+   *       function(myResolve1) {
+   *         return myResolve1.get()
+   *       }
+   *     }</pre>
+   *
    * @param {string=} stateConfig.url
    * <a id='url'></a>
    *
